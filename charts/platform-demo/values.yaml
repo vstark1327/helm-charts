@@ -116,7 +116,7 @@ grafana:
     type: NodePort
     nodePort: 31230
   adminUser: demo
-  adminPassword: demo 
+  adminPassword: demo
   datasources:
     datasources.yaml:
       apiVersion: 1
@@ -129,11 +129,22 @@ grafana:
         user: telegraf
         password: telegraf
         jsonData:
-          httpMode: GET  
+          httpMode: GET
+  containerSecurityContext:
+    seccompProfile: null
   sidecar:
+    securityContext:
+      seccompProfile: null
     dashboards:
       enabled: true
       label: grafana_dashboard
+  downloadDashboards:
+    securityContext:
+      seccompProfile: null
+  initChownData:
+    securityContext:
+      seccompProfile: null
+    
 
 
 pintura:
